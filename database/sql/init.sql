@@ -166,6 +166,13 @@ proc_label: BEGIN  -- 定义一个标签
 END$$
 DELIMITER ;
 
+-- 创建用户
+CREATE USER 'shop_admin'@'%' IDENTIFIED BY 'shoppassword';
+-- 授予新用户对shop数据库的所有权限
+GRANT ALL PRIVILEGES ON shop.* TO 'shop_admin'@'%';
+-- 刷新权限，使更改立即生效
+FLUSH PRIVILEGES;
+
 -- 自动备份（未测试）
 DELIMITER $$
 CREATE EVENT IF NOT EXISTS db_backup
