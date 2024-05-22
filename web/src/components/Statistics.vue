@@ -5,32 +5,32 @@
         <!-- 每日销售额 -->
         <div class="statistics-group">
             <h2 class="statistics-title">每日销售额</h2>
-            {{ dailySales.totalSales }}
+            <p class="statistics-data">{{ dailySales.totalSales }}</p>
         </div>
 
         <!-- 每月销售额 -->
         <div class="statistics-group">
             <h2 class="statistics-title">每月销售额</h2>
-            {{ monthlySales.totalSales }}
+            <p class="statistics-data">{{ monthlySales.totalSales }}</p>
         </div>
 
         <!-- 每年销售额 -->
         <div class="statistics-group">
             <h2 class="statistics-title">每年销售额</h2>
-            {{ yearlySales.totalSales }}
+            <p class="statistics-data">{{ yearlySales.totalSales }}</p>
         </div>
 
         <!-- 总支出 -->
         <div class="statistics-group">
             <h2 class="statistics-title">总支出</h2>
-            员工: {{ totalExpense.staffExpense }}<br/>
-            进货: {{ totalExpense.productExpense }}
+            <p class="statistics-data">员工: {{ totalExpense.staffExpense }}</p>
+            <p class="statistics-data">进货: {{ totalExpense.productExpense }}</p>
         </div>
 
         <!-- 总收入 -->
         <div class="statistics-group">
             <h2 class="statistics-title">总收入</h2>
-            {{ totalIncome.income }}
+            <p class="statistics-data">{{ totalIncome.income }}</p>
         </div>
     </div>
 </template>
@@ -76,4 +76,34 @@ export default {
 }
 </script>
 
-<style src="../assets/table.css"></style>
+<style scoped>
+.container {
+    width: 80%;
+    margin: auto;
+    font-family: 'Roboto', sans-serif;
+}
+
+.title {
+    text-align: center;
+    color: #3F51B5;
+    margin-bottom: 40px;
+}
+
+.statistics-group {
+    background-color: #E8EAF6;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.statistics-title {
+    color: #3F51B5;
+    margin-bottom: 10px;
+}
+
+.statistics-data {
+    color: #1A237E;
+    font-weight: bold;
+}
+</style>
