@@ -1,0 +1,15 @@
+FROM openjdk:17
+
+#COPY ./spring /tmp/spring
+#WORKDIR /tmp/spring
+#RUN /tmp/spring/gradlew shadowJar
+#RUN mkdir /home/service/ && cp /tmp/spring/build/libs/manhole-api-service-0.0.1.jar /home/service/app.jar
+#RUN rm -rf /tmp/spring
+
+#RUN mkdir /home/api/
+
+#COPY ./hop-api-0.0.1.jar /home/api/api.jar
+
+WORKDIR /home/api/
+
+CMD ["java","-jar","./shop-api-0.0.1.jar"]

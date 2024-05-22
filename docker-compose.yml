@@ -1,0 +1,39 @@
+version: '3'
+services:
+    reverse_proxy:
+        image: nginx
+        ports:
+            - "80:80"
+        volumes:
+            - ./web/dist:/html
+            - ./nginx.conf:/etc/nginx/nginx.conf
+        restart: on-failure:3
+        links:
+            - database
+            - api
+
+    api:
+        build: ./api
+        # debug only
+        #ports:
+        #    - "8080:8080"
+        volumes:
+           - ./api/build/libs/:/home/api
+        restart: on-failure:3
+        links:
+            - database
+
+    database:
+        image: mariadb
+        ports:
+            - "3306:3306"
+        volumes:
+            #- mysql:/var/lib/mysql
+            - ./database/sql:/docker-entrypoint-initdb.d
+        restart: on-failure:3
+        environment:
+            MYSQL_ROOT_PASSWORD: mariadb
+            #MYSQL_USER: lain
+            #MYSQL_PASSWORD: mariadb
+#volumes:
+#    mysql:
