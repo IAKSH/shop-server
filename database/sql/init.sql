@@ -23,8 +23,8 @@ CREATE TABLE Product (
 CREATE TABLE Member (
     MemberID INT PRIMARY KEY AUTO_INCREMENT,
     Name VARCHAR(100),
-    MembershipStartDate DATE DEFAULT NOW(),
-    MembershipEndDate DATE
+    MembershipStartDate DATETIME DEFAULT NOW(),
+    MembershipEndDate DATETIME
 );
 
 -- 销售表
@@ -96,7 +96,7 @@ CREATE EVENT ExpiredMembership
 ON SCHEDULE EVERY 1 DAY
 DO
 BEGIN
-    DELETE FROM Member WHERE MembershipEndDate < CURDATE();
+    DELETE FROM Member WHERE MembershipEndDate < NOW();
 END$$
 DELIMITER ;
 
