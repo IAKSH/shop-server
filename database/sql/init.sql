@@ -117,6 +117,9 @@ proc_label: BEGIN  -- 定义一个标签
     -- 从货源购入商品
     INSERT INTO Purchase (ProductID, PurchaseTime, PurchaseUnitPrice, PurchaseQuantity, SourceID) VALUES (p_ProductID, p_PurchaseTime, p_PurchaseUnitPrice, p_PurchaseQuantity, p_SourceID);
 
+    -- 更新商品表中的数量
+    UPDATE Product SET Quantity = Quantity + p_PurchaseQuantity WHERE ProductID = p_ProductID;
+
     -- 提交事务
     COMMIT;
 END$$
